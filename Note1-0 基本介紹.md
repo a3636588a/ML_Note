@@ -45,13 +45,10 @@ $\mathbf{B}$ 是當你算完 $\mathbf{X} \cdot \mathbf{W}$ 後，會加上的一
 $$\mathbf{B} = \begin{bmatrix} b_1 & b_2 & b_3 \end{bmatrix}$$
 
 因此完整的計算過程為：
-$$
-\begin{aligned}
-\mathbf{Z} &= \mathbf{X} \cdot \mathbf{W} + \mathbf{B} \\
-\mathbf{Z} &= \begin{bmatrix} x_1 & x_2 & x_3 & x_4 \end{bmatrix} \begin{bmatrix} w_{11} & w_{12} & w_{13} \\ w_{21} & w_{22} & w_{23} \\ w_{31} & w_{32} & w_{33} \\ w_{41} & w_{42} & w_{43} \end{bmatrix} + \begin{bmatrix} b_1 & b_2 & b_3 \end{bmatrix} \\
-\mathbf{Z} &= \begin{bmatrix} (x_1 w_{11} + x_2 w_{21} + x_3 w_{31} + x_4 w_{41} + b_1) & (x_1 w_{12} + x_2 w_{22} + x_3 w_{32} + x_4 w_{42} + b_2) & (x_1 w_{13} + x_2 w_{23} + x_3 w_{33} + x_4 w_{43} + b_3) \end{bmatrix}
-\end{aligned}
-$$
+![矩陣運算公式](image/media__1781145870925.png)
+
+計算後的展開式為：
+$$\mathbf{Z} = \begin{bmatrix} (x_1 w_{11} + x_2 w_{21} + x_3 w_{31} + x_4 w_{41} + b_1) & (x_1 w_{12} + x_2 w_{22} + x_3 w_{32} + x_4 w_{42} + b_2) & (x_1 w_{13} + x_2 w_{23} + x_3 w_{33} + x_4 w_{43} + b_3) \end{bmatrix}$$
 輸出 $\mathbf{Z}$ 即為一個 $1 \times 3$ 的矩陣，代表這一層 3 個神經元的輸出值。
 
 ---
