@@ -11,9 +11,13 @@
 ## 基礎定義與神經網路公式
 
 在機器學習中，單個神經元的基礎計算公式為：
-$$Z = \left( \sum_{i=1}^{n} w_i \cdot x_i \right) + b$$
+$$
+Z = \left( \sum_{i=1}^{n} w_i \cdot x_i \right) + b
+$$
 當我們以矩陣（多個神經元與多筆資料）來表示時，公式為：
-$$\mathbf{Z} = \mathbf{X} \cdot \mathbf{W} + \mathbf{B}$$
+$$
+\mathbf{Z} = \mathbf{X} \cdot \mathbf{W} + \mathbf{B}
+$$
 
 神經網路的基本結構包含三個層面，分別對應到公式中的變數：
 1. **輸入層 (Input Layer)**：對應到向量或矩陣 $\mathbf{X}$。
@@ -23,10 +27,14 @@ $$\mathbf{Z} = \mathbf{X} \cdot \mathbf{W} + \mathbf{B}$$
 
 ### 1. 輸入矩陣 $\mathbf{X}$ 的舉例 ($1 \times 4$ 矩陣)
 輸入矩陣 $\mathbf{X}$ 代表輸入特徵。例如，我們有 4 個感測器特徵（例如：溫度、壓力、流量、振動頻率）：
-$$\mathbf{X} = \begin{bmatrix} x_1 & x_2 & x_3 & x_4 \end{bmatrix}$$
+$$
+\mathbf{X} = \begin{bmatrix} x_1 & x_2 & x_3 & x_4 \end{bmatrix}
+$$
 這是一個 $1 \times 4$ 的矩陣（1 列 4 行），代表一筆包含 4 個特徵的觀測資料。
 例如實際數值可以是：
-$$\mathbf{X} = \begin{bmatrix} 25.5 & 101.3 & 5.2 & 0.8 \end{bmatrix}$$
+$$
+\mathbf{X} = \begin{bmatrix} 25.5 & 101.3 & 5.2 & 0.8 \end{bmatrix}
+$$
 
 ### 2. 權重矩陣 $\mathbf{W}$ 的維度轉換 ($4 \times 3$ 矩陣)
 $\mathbf{W}$ 矩陣決定了資料要從**「幾維空間」**轉換到**「幾維空間」**。
@@ -34,7 +42,9 @@ $\mathbf{W}$ 矩陣決定了資料要從**「幾維空間」**轉換到**「幾�
 * **$\mathbf{W}$ 矩陣的行數 (Column)**：代表**「這一層想產生的神經元（特徵）數」**。
 
 若上一層有 4 個特徵（即輸入 $\mathbf{X}$ 的維度為 4），且我們希望這一層產生 3 個神經元，則 $\mathbf{W}$ 必須是一個 $4 \times 3$ 的矩陣（4 列 3 行）：
-$$\mathbf{W} = \begin{bmatrix} w_{11} & w_{12} & w_{13} \\ w_{21} & w_{22} & w_{23} \\ w_{31} & w_{32} & w_{33} \\ w_{41} & w_{42} & w_{43} \end{bmatrix}$$
+$$
+\mathbf{W} = \begin{bmatrix} w_{11} & w_{12} & w_{13} \\ w_{21} & w_{22} & w_{23} \\ w_{31} & w_{32} & w_{33} \\ w_{41} & w_{42} & w_{43} \end{bmatrix}
+$$
 
 當我們進行矩陣乘法 $\mathbf{X} \cdot \mathbf{W}$（即一個 $1 \times 4$ 矩陣與一個 $4 \times 3$ 矩陣相乘）時：
 $$(1 \times 4) \times (4 \times 3) = (1 \times 3)$$
@@ -42,13 +52,17 @@ $$(1 \times 4) \times (4 \times 3) = (1 \times 3)$$
 
 ### 3. 偏移矩陣 $\mathbf{B}$ (Bias)
 $\mathbf{B}$ 是當你算完 $\mathbf{X} \cdot \mathbf{W}$ 後，會加上的一個偏移量。它的維度必須與輸出的維度一致（在此例中為 $1 \times 3$）：
-$$\mathbf{B} = \begin{bmatrix} b_1 & b_2 & b_3 \end{bmatrix}$$
+$$
+\mathbf{B} = \begin{bmatrix} b_1 & b_2 & b_3 \end{bmatrix}
+$$
 
 因此完整的計算過程為：
 ![矩陣運算公式](image/media__1781145870925.png)
 
 計算後的展開式為：
-$$\mathbf{Z} = \begin{bmatrix} (x_1 w_{11} + x_2 w_{21} + x_3 w_{31} + x_4 w_{41} + b_1) & (x_1 w_{12} + x_2 w_{22} + x_3 w_{32} + x_4 w_{42} + b_2) & (x_1 w_{13} + x_2 w_{23} + x_3 w_{33} + x_4 w_{43} + b_3) \end{bmatrix}$$
+$$
+\mathbf{Z} = \begin{bmatrix} (x_1 w_{11} + x_2 w_{21} + x_3 w_{31} + x_4 w_{41} + b_1) & (x_1 w_{12} + x_2 w_{22} + x_3 w_{32} + x_4 w_{42} + b_2) & (x_1 w_{13} + x_2 w_{23} + x_3 w_{33} + x_4 w_{43} + b_3) \end{bmatrix}
+$$
 輸出 $\mathbf{Z}$ 即為一個 $1 \times 3$ 的矩陣，代表這一層 3 個神經元的輸出值。
 
 ---
@@ -65,7 +79,9 @@ $$\mathbf{Z} = \begin{bmatrix} (x_1 w_{11} + x_2 w_{21} + x_3 w_{31} + x_4 w_{41
 * **物理意義（白話）**：「綜合所有人的意見，算出得分。」
 * **數學公式**：
   對於第 $j$ 個輸出神經元 $z_j$：
-  $$z_j = \left( \sum_{i=1}^{D_{in}} x_i \cdot w_{ij} \right) + b_j$$
+  $$
+  z_j = \left( \sum_{i=1}^{D_{in}} x_i \cdot w_{ij} \right) + b_j
+  $$
   其中 $D_{in}$ 是輸入特徵的總數，每個輸入特徵 $x_i$ 都與一個專屬權重 $w_{ij}$ 相乘。
 
 ### 2. 卷積網路 (CNN - Convolutional Neural Network)
@@ -74,7 +90,9 @@ $$\mathbf{Z} = \begin{bmatrix} (x_1 w_{11} + x_2 w_{21} + x_3 w_{31} + x_4 w_{41
 * **物理意義（白話）**：「像放大鏡一樣，不管特徵出現在哪都抓得出來。」
 * **數學公式**：
   以二維圖像卷積為例，對於輸出特徵圖的特定位置 $(i, j)$，其計算公式為：
-  $$z_{i, j} = \left( \sum_{m=0}^{K_H-1} \sum_{n=0}^{K_W-1} x_{i+m, \, j+n} \cdot w_{m, n} \right) + b$$
+  $$
+  z_{i, j} = \left( \sum_{m=0}^{K_H-1} \sum_{n=0}^{K_W-1} x_{i+m, \, j+n} \cdot w_{m, n} \right) + b
+  $$
   其中 $K_H$ 和 $K_W$ 分別是卷積核（Kernel）的高度與寬度，$w_{m, n}$ 是卷積核在位置 $(m, n)$ 的權重。
 
 #### 卷積運算過程示意圖
@@ -84,5 +102,7 @@ $$\mathbf{Z} = \begin{bmatrix} (x_1 w_{11} + x_2 w_{21} + x_3 w_{31} + x_4 w_{41
 * **輸入 (Image)**：一個 $5 \times 5$ 的矩陣。
 * **卷積核 (Kernel/Filter)**：一個 $3 \times 3$ 的矩陣（圖中黃色遮罩對應的乘數，如底部的紅字 $\times 1$、$\times 0$、$\times 1$）。
 * **運算方式**：卷積核在輸入矩陣上由左至右、由上至下滑動。每次覆蓋一個 $3 \times 3$ 的區域，並將對應位置的元素相乘後相加：
-  $$z_{0, 0} = (1 \times 1) + (1 \times 0) + (1 \times 1) + (0 \times 0) + (1 \times 1) + (1 \times 0) + (0 \times 1) + (0 \times 0) + (1 \times 1) = 1 + 0 + 1 + 0 + 1 + 0 + 0 + 0 + 1 = 4$$
+  $$
+  z_{0, 0} = (1 \times 1) + (1 \times 0) + (1 \times 1) + (0 \times 0) + (1 \times 1) + (1 \times 0) + (0 \times 1) + (0 \times 0) + (1 \times 1) = 1 + 0 + 1 + 0 + 1 + 0 + 0 + 0 + 1 = 4
+  $$
 * **特徵圖 (Convolved Feature)**：滑動計算後得到的輸出，此例中為一個 $3 \times 3$ 的矩陣，第一個計算結果為 **4**。
