@@ -70,7 +70,7 @@ $$\mathbf{Z} = \begin{bmatrix}
 
 在不同的神經網路架構中，權重矩陣 $\mathbf{W}$ 扮演了不同的角色，其計算方式與物理意義也有所不同。以下為全連接神經網路 (FNN) 與卷積神經網路 (CNN) 的比較：
 
-![FNN vs CNN 權重定義比較](![media__1781143897392](https://hackmd.io/_uploads/Syqzscv-zl.png))
+![FNN vs CNN 權重定義比較](image/media__1781143897392.png)
 
 ### 1. 全連接層 (FNN - Fully Connected Neural Network)
 * **權重名稱**：Weights (權重)
@@ -91,8 +91,7 @@ $$\mathbf{Z} = \begin{bmatrix}
   其中 $K_H$ 和 $K_W$ 分別是卷積核（Kernel）的高度與寬度，$w_{m, n}$ 是卷積核在位置 $(m, n)$ 的權重。
 
 #### 卷積運算過程示意圖
-![CNN 卷積運算示意圖](![1_ZCjPUFrB6eHPRi4eyP6aaA](https://hackmd.io/_uploads/Ske-3qvbzl.gif)
-)
+![CNN 卷積運算示意圖](image/1_ZCjPUFrB6eHPRi4eyP6aaA.gif)
 
 如上圖所示：
 * **輸入 (Image)**：一個 $5 \times 5$ 的矩陣。
