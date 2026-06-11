@@ -34,12 +34,7 @@ $\mathbf{W}$ 矩陣決定了資料要從**「幾維空間」**轉換到**「幾�
 * **$\mathbf{W}$ 矩陣的行數 (Column)**：代表**「這一層想產生的神經元（特徵）數」**。
 
 若上一層有 4 個特徵（即輸入 $\mathbf{X}$ 的維度為 4），且我們希望這一層產生 3 個神經元，則 $\mathbf{W}$ 必須是一個 $4 \times 3$ 的矩陣（4 列 3 行）：
-$$\mathbf{W} = \begin{bmatrix} 
-w_{11} & w_{12} & w_{13} \\
-w_{21} & w_{22} & w_{23} \\
-w_{31} & w_{32} & w_{33} \\
-w_{41} & w_{42} & w_{43}
-\end{bmatrix}$$
+$$\mathbf{W} = \begin{bmatrix} w_{11} & w_{12} & w_{13} \\ w_{21} & w_{22} & w_{23} \\ w_{31} & w_{32} & w_{33} \\ w_{41} & w_{42} & w_{43} \end{bmatrix}$$
 
 當我們進行矩陣乘法 $\mathbf{X} \cdot \mathbf{W}$（即一個 $1 \times 4$ 矩陣與一個 $4 \times 3$ 矩陣相乘）時：
 $$(1 \times 4) \times (4 \times 3) = (1 \times 3)$$
@@ -50,18 +45,13 @@ $\mathbf{B}$ 是當你算完 $\mathbf{X} \cdot \mathbf{W}$ 後，會加上的一
 $$\mathbf{B} = \begin{bmatrix} b_1 & b_2 & b_3 \end{bmatrix}$$
 
 因此完整的計算過程為：
-$$\mathbf{Z} = \mathbf{X} \cdot \mathbf{W} + \mathbf{B}$$
-$$\mathbf{Z} = \begin{bmatrix} x_1 & x_2 & x_3 & x_4 \end{bmatrix} \begin{bmatrix} 
-w_{11} & w_{12} & w_{13} \\
-w_{21} & w_{22} & w_{23} \\
-w_{31} & w_{32} & w_{33} \\
-w_{41} & w_{42} & w_{43}
-\end{bmatrix} + \begin{bmatrix} b_1 & b_2 & b_3 \end{bmatrix}$$
-$$\mathbf{Z} = \begin{bmatrix} 
-(x_1 w_{11} + x_2 w_{21} + x_3 w_{31} + x_4 w_{41} + b_1) &
-(x_1 w_{12} + x_2 w_{22} + x_3 w_{32} + x_4 w_{42} + b_2) &
-(x_1 w_{13} + x_2 w_{23} + x_3 w_{33} + x_4 w_{43} + b_3)
-\end{bmatrix}$$
+$$
+\begin{aligned}
+\mathbf{Z} &= \mathbf{X} \cdot \mathbf{W} + \mathbf{B} \\
+\mathbf{Z} &= \begin{bmatrix} x_1 & x_2 & x_3 & x_4 \end{bmatrix} \begin{bmatrix} w_{11} & w_{12} & w_{13} \\ w_{21} & w_{22} & w_{23} \\ w_{31} & w_{32} & w_{33} \\ w_{41} & w_{42} & w_{43} \end{bmatrix} + \begin{bmatrix} b_1 & b_2 & b_3 \end{bmatrix} \\
+\mathbf{Z} &= \begin{bmatrix} (x_1 w_{11} + x_2 w_{21} + x_3 w_{31} + x_4 w_{41} + b_1) & (x_1 w_{12} + x_2 w_{22} + x_3 w_{32} + x_4 w_{42} + b_2) & (x_1 w_{13} + x_2 w_{23} + x_3 w_{33} + x_4 w_{43} + b_3) \end{bmatrix}
+\end{aligned}
+$$
 輸出 $\mathbf{Z}$ 即為一個 $1 \times 3$ 的矩陣，代表這一層 3 個神經元的輸出值。
 
 ---
